@@ -6,9 +6,8 @@
 
 <script>
 export default {
-  name: 'Footer'
-
-}
+  name: "Footer",
+};
 </script>
 
 <style>

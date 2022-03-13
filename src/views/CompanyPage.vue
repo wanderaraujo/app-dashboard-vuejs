@@ -2,11 +2,14 @@
   <aside>
     <div class="col-7 col-s-9">
       <div class="company-description">
-        <img alt="company-logo" src="@/assets/companies/microsoft.jpeg">
+        <img alt="company-logo" src="@/assets/companies/microsoft.jpeg" />
         <p class="name-company">Microsoft</p>
         <p class="locate">Redmond, WA USA</p>
-        <p class="description">At Microsoft, our mission is to empower every person and every organization on the planet to achieve more.
-         Our mission is grounded in both the world in wich we live and the future we strive to create. <a href="https://www.microsoft.com/en-us/about">View More...</a>
+        <p class="description">
+          At Microsoft, our mission is to empower every person and every
+          organization on the planet to achieve more. Our mission is grounded in
+          both the world in wich we live and the future we strive to create.
+          <a href="https://www.microsoft.com/en-us/about">View More...</a>
         </p>
       </div>
     </div>
@@ -24,31 +27,30 @@
 </template>
 
 <script>
-import Activities from '@/components/Activities.vue'
-import SimilarCompanies from '@/components/SimilarCompanies.vue'
-import SpendHistory from '@/components/SpendHistory.vue'
+import Activities from "@/components/Activities.vue";
+import SimilarCompanies from "@/components/SimilarCompanies.vue";
+import SpendHistory from "@/components/SpendHistory.vue";
 
 export default {
-  name: 'CompanyPage',
+  name: "CompanyPage",
   components: {
     Activities,
     SimilarCompanies,
-    SpendHistory
+    SpendHistory,
   },
-  created () {
-    document.querySelector('html').classList.add('companyPage')
+  created() {
+    document.querySelector("html").classList.add("companyPage");
   },
-  destroyed () {
-    document.querySelector('html').classList.remove('companyPage')
-  }
-}
+  destroyed() {
+    document.querySelector("html").classList.remove("companyPage");
+  },
+};
 </script>
 
 <style>
-
 .companyPage {
-  background: #E7E9F3;
-  font-family: 'Roboto', sans-serif;
+  background: #e7e9f3;
+  font-family: "Roboto", sans-serif;
   color: #333333;
 }
 
@@ -56,9 +58,9 @@ export default {
   width: 11%;
   min-width: 11%;
   border-radius: 8px;
-  border: 1px solid #CED2E0;
-  box-shadow: 0 1px 8px 0 rgba(0,0,0,0.1);
-  background-color: #FFFFFF;
+  border: 1px solid #ced2e0;
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
   float: left;
   margin-right: 20px;
   padding: 7px;
@@ -84,13 +86,12 @@ export default {
   font-size: 14px;
   font-weight: 600;
   border-radius: 3px;
-  border: 1px solid #D4D9E3;
-  background-color: #FFFFFF;
+  border: 1px solid #d4d9e3;
+  background-color: #ffffff;
   padding: 18px;
 }
 
 .other-info {
   padding-top: 30px;
 }
-
 </style>

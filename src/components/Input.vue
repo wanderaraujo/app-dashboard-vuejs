@@ -1,33 +1,37 @@
 <template>
   <div>
-    <p :for=label class="label-input" v-show="label"> {{ label }} </p>
-    <input :type=type :placeholder=placeholder :style="`width:${size}`" @input="$emit('input', $event.target.value)" />
+    <p :for="label" class="label-input" v-show="label">{{ label }}</p>
+    <input
+      :type="type"
+      :placeholder="placeholder"
+      :style="`width:${size}`"
+      @input="$emit('input', $event.target.value)"
+    />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Input',
+  name: "Input",
   props: {
     label: String,
     type: String,
     placeholder: String,
-    size: String
+    size: String,
   },
-  inject: ['$validator']
-}
+  inject: ["$validator"],
+};
 </script>
 
 <style>
-
-input[type=text]{
+input[type="text"] {
   border-radius: 3px;
-  border: 1px solid #CED2E0;
+  border: 1px solid #ced2e0;
   padding: 0px 10px;
   color: #555353;
   font-size: 15px;
   line-height: 37px;
-  box-shadow: 0 1px 8px 0 rgba(0,0,0,0.1);
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.1);
   resize: vertical;
 }
 </style>

@@ -4,10 +4,17 @@
       <li>Activities</li>
       <li v-for="(act, index) in $store.getters.activities" :key="index">
         <vcl-code v-show="false"></vcl-code>
-        <label for="date-at" class="date-at">{{ act.date | moment("from", "now") }}</label>
-        <ImgCategory :img=act.category.img :info=act.category.info class="info-at"/>
+        <label for="date-at" class="date-at">{{
+          act.date | moment("from", "now")
+        }}</label>
+        <ImgCategory
+          :img="act.category.img"
+          :info="act.category.info"
+          class="info-at"
+        />
         <label class="event"> {{ act.event }}</label>
-        <label class="company"> {{ act.company }}</label>on
+        <label class="company"> {{ act.company }}</label
+        >on
         <label class="info-at">{{ act.property }}</label>
       </li>
     </ul>
@@ -15,21 +22,20 @@
 </template>
 
 <script>
-import ImgCategory from './ImgCategory'
-import { VclCode } from 'vue-content-loading'
+import ImgCategory from "./ImgCategory";
+import { VclCode } from "vue-content-loading";
 
 export default {
-  name: 'Activities',
+  name: "Activities",
   components: {
     VclCode,
-    ImgCategory
-  }
-}
+    ImgCategory,
+  },
+};
 </script>
 
 <style scoped>
-
-*{
+* {
   font-size: 17px;
   font-weight: 500;
 }
@@ -37,8 +43,8 @@ export default {
 .activities li {
   font-size: 14px;
   border-radius: 3px;
-  border: 1px solid #D4D9E3;
-  background-color: #FFFFFF;
+  border: 1px solid #d4d9e3;
+  background-color: #ffffff;
   padding: 25px;
 }
 
@@ -48,7 +54,7 @@ export default {
 }
 
 .info-at {
-  color: #5D699A;
+  color: #5d699a;
 }
 
 .company {
@@ -60,7 +66,7 @@ export default {
 }
 
 .activities li a {
-  text-decoration:none;
-  color: #5D699A;
+  text-decoration: none;
+  color: #5d699a;
 }
 </style>

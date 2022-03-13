@@ -2,9 +2,12 @@
   <table>
     <thead>
       <tr>
-        <th v-for="(key, index) in columns" :key="index"
+        <th
+          v-for="(key, index) in columns"
+          :key="index"
           @click="sortBy(key)"
-          :class="{ active: sortKey == key }">
+          :class="{ active: sortKey == key }"
+        >
           {{ key | capitalize }}
           <span class="arrow" :class="sortOrders[key] > 0 ? 'asc' : 'dsc'">
           </span>
@@ -14,20 +17,28 @@
     <tbody class="data">
       <tr v-for="(entry, index) in filteredData" :key="index">
         <td>
-          {{entry.company}}
+          {{ entry.company }}
         </td>
         <td class="font-data">
-          {{entry.location}}
+          {{ entry.location }}
         </td>
         <td class="font-data">
-          <ImgCategory :img=entry.category.img :info=entry.category.info />
+          <ImgCategory :img="entry.category.img" :info="entry.category.info" />
         </td>
         <td class="dots">
           <div>
-            <span v-for="(active) in entry.spend" :key=active class="dot-active"></span>
+            <span
+              v-for="active in entry.spend"
+              :key="active"
+              class="dot-active"
+            ></span>
           </div>
           <div>
-            <span v-for="(empty) in 6 - entry.spend" :key=empty class="dot-empty"></span>
+            <span
+              v-for="empty in 6 - entry.spend"
+              :key="empty"
+              class="dot-empty"
+            ></span>
           </div>
         </td>
       </tr>
@@ -36,77 +47,75 @@
 </template>
 
 <script>
-import ImgCategory from './ImgCategory'
+import ImgCategory from "./ImgCategory";
 export default {
-  name: 'Table',
-  template: '#grid-template',
+  name: "Table",
+  template: "#grid-template",
   props: {
     data: Array,
     columns: Array,
-    filterKey: String
+    filterKey: String,
   },
   data: function () {
-    var sortOrders = {}
+    var sortOrders = {};
     this.columns.forEach(function (key) {
-      sortOrders[key] = 1
-    })
+      sortOrders[key] = 1;
+    });
     return {
-      sortKey: '',
-      sortOrders: sortOrders
-    }
+      sortKey: "",
+      sortOrders: sortOrders,
+    };
   },
   computed: {
     filteredData: function () {
-      var sortKey = this.sortKey
-      var filterKey = this.filterKey && this.filterKey.toLowerCase()
-      var order = this.sortOrders[sortKey] || 1
-      var data = this.data
+      var sortKey = this.sortKey;
+      var filterKey = this.filterKey && this.filterKey.toLowerCase();
+      var order = this.sortOrders[sortKey] || 1;
+      var data = this.data;
       if (filterKey) {
         data = data.filter(function (row) {
           return Object.keys(row).some(function (key) {
-            return String(row[key]).toLowerCase().indexOf(filterKey) > -1
-          })
-        })
+            return String(row[key]).toLowerCase().indexOf(filterKey) > -1;
+          });
+        });
       }
       if (sortKey) {
         data = data.slice().sort(function (a, b) {
-          a = a[sortKey]
-          b = b[sortKey]
-          return (a === b ? 0 : a > b ? 1 : -1) * order
-        })
+          a = a[sortKey];
+          b = b[sortKey];
+          return (a === b ? 0 : a > b ? 1 : -1) * order;
+        });
       }
-      return data
-    }
+      return data;
+    },
   },
   filters: {
     capitalize: function (str) {
-      return str.charAt(0).toUpperCase() + str.slice(1)
-    }
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    },
   },
   methods: {
     sortBy: function (key) {
-      this.sortKey = key
-      this.sortOrders[key] = this.sortOrders[key] * -1
-    }
+      this.sortKey = key;
+      this.sortOrders[key] = this.sortOrders[key] * -1;
+    },
   },
   components: {
-    ImgCategory
-  }
-
-}
+    ImgCategory,
+  },
+};
 </script>
 
 <style lang="scss">
-
 table {
   border-radius: 3px;
-  border: 1px solid #D4D9E3;
+  border: 1px solid #d4d9e3;
   border-collapse: collapse;
   width: 100%;
 }
 
 th {
-  background-color: #F1F2F6;
+  background-color: #f1f2f6;
   color: #505050;
   cursor: pointer;
   -webkit-user-select: none;
@@ -116,14 +125,15 @@ th {
   padding: 22px !important;
 }
 
-th, td {
+th,
+td {
   text-align: left;
   padding: 20px;
   border-right: 1px solid #ddd;
 }
 
 tr:nth-child(even) {
-  background-color: #F6F7F9;
+  background-color: #f6f7f9;
 }
 
 .arrow {
@@ -148,10 +158,10 @@ tr:nth-child(even) {
 }
 
 .data tr > td:first-child {
-  color: #5D699A;
+  color: #5d699a;
 }
 
-.dots{
+.dots {
   display: flex;
 }
 
@@ -169,12 +179,11 @@ tr:nth-child(even) {
   width: 11px;
   display: inline-block;
   border-radius: 50%;
-  background-color: #20C795;
+  background-color: #20c795;
   margin-right: 5px;
 }
 
-.font-data{
+.font-data {
   color: #505050;
 }
-
 </style>
